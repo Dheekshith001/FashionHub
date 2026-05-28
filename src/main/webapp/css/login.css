@@ -1,0 +1,444 @@
+:root {
+    --primary-color: #ff6b1a;
+    --primary-hover: #ff8533;
+    --bg-color: #f6f7fb;
+    --card-bg: #ffffff;
+    --text-main: #222222;
+    --text-muted: #666666;
+    --border-color: rgba(22, 24, 30, 0.1);
+    --error-bg: #fef2f2;
+    --error-text: #b91c1c;
+    --shadow: 0 8px 24px rgba(17, 20, 27, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card {
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.alert-error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    border: 1px solid #fee2e2;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.forgot-link {
+    font-size: 0.8125rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.btn-login {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-hover);
+}
+/* =========================================================
+   login.css - Redesigned, Animated Split-Screen Login
+   ========================================================= */
+
+/* --- A. BLOCKS HARMFUL GLOBAL BODY STYLES from global CSS ---
+   Loads after global style.css and uses !important to nullify direct structure overrides. */
+
+body {
+    display: block !important; /* Force block layout for the WHOLE PAGE */
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #f4f7f6; /* Soft base background */
+}
+
+/* --- B. DEFINES CONTENT LAYOUT WRAPPER & ANIMATION BASE --- */
+
+.content-wrapper {
+    position: relative;
+    padding-top: 100px; /* Offset for fixed header */
+    padding-bottom: 80px; /* Offset for footer */
+    min-height: calc(100vh - 80px - 300px); /* Fill space */
+    
+    /* Apply useful center styles HERE, not on global body */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    
+    /* Background Animation Layer (Will contain the canvas) */
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    z-index: 1;
+}
+
+/* Particle Canvas background element */
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind content */
+    opacity: 0.3;
+}
+
+/* --- C. CENTER THE CONTAINER WIDER (for Split Design) --- */
+
+/* Centers correctly inside the flexwrapper by blocking any previous conflicting centering logic */
+.content-wrapper .login-container {
+    width: 90%;
+    max-width: 900px; /* New, wider container for split design */
+    position: static !important;
+    margin: 0 !important;
+}
+
+/* D. PREPARE THE CARD STRUCTURE FOR SPLIT EFFECT */
+.content-wrapper .login-container .login-card {
+    /* Override position: absolute to allow flexbox centering */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    display: block !important;
+    margin: 0 auto;
+    
+    /* Redesign styles */
+    border-radius: 20px;
+    overflow: hidden; /* For split effect */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    background: #fff;
+    padding: 0 !important; /* Resetting old padding for split logic */
+}
+
+/* =========================================================
+   PART E: MODERN SPLIT-SCREEN LOGIN DESIGN
+   ========================================================= */
+
+/* 1. New Split Structure inside login-card */
+.login-card .split-container {
+    display: flex;
+    width: 100%;
+    min-height: 550px;
+}
+
+/* 2. Left Side: Form Area */
+.split-container .form-side {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Form Area Header */
+.form-side .header {
+    margin-bottom: 40px;
+}
+.form-side .header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+}
+.form-side .header p {
+    margin-top: 5px;
+    color: #7f8c8d;
+}
+
+/* Error Message styling */
+.alert-error {
+    text-align: left;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* 3. MODERN INPUT GROUP STYLING (Floating Labels Logic) */
+.modern-input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.modern-input-group input {
+    width: 100%;
+    padding: 15px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #e0e0e0; /* Clean underline */
+    background: transparent;
+    outline: none;
+    transition: 0.3s;
+    color: #1a1c22;
+}
+
+.modern-input-group label {
+    position: absolute;
+    top: 15px;
+    left: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+/* Floating label effect when focused or has content */
+.modern-input-group input:focus ~ label,
+.modern-input-group input:valid ~ label {
+    top: -10px;
+    left: 0px;
+    font-size: 12px;
+    color: var(--orange); /* The orange theme color from style.css */
+    font-weight: 700;
+}
+
+.modern-input-group input:focus {
+    border-color: var(--orange); /* Orange underline on focus */
+}
+
+/* Reset Conflicts for label row */
+.label-row-modern {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Old forgot link conflicts override */
+.label-row-modern a.forgot-link {
+    font-size: 13px;
+    color: var(--orange);
+    text-decoration: none;
+}
+.label-row-modern a.forgot-link:hover { text-decoration: underline; }
+
+/* 4. MODERNIZED BUTTON */
+.btn-login {
+    background: linear-gradient(to right, var(--orange), #ff4d4d);
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 26, 0.3);
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 26, 0.5);
+    background: var(--orange);
+}
+
+/* Old conflicting card footer styling fixes */
+.login-card .footer {
+    margin-top: 30px !important;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    color: #7f8c8d;
+    background: transparent !important;
+    position: static !important;
+    text-align: center;
+    font-size: 0.875rem;
+}
+.login-card .footer a { color: var(--orange); font-weight: 700; text-decoration: none; }
+.login-card .footer a:hover { text-decoration: underline; }
+
+/* =========================================================
+   PART F: GRAPHIC/BRANDING SIDE DESIGN
+   ========================================================= */
+
+/* Right Side: Attractive Branding Content area */
+.split-container .graphic-side {
+    flex: 1;
+    background: linear-gradient(135deg, #1a1c22 0%, #2c3e50 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Graphic Side: Decorative vignette elements */
+.graphic-side .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.graphic-side h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #fff;
+    z-index: 2;
+    text-transform: uppercase;
+}
+.graphic-side h3 span { color: var(--orange); }
+.graphic-side p {
+    color: #bdc3c7;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    z-index: 2;
+    max-width: 300px;
+}
+/* Reusing global logo class but with specific edits */
+.graphic-side .logo-img {
+    width: 80px; height: 80px; z-index: 2; margin-top: 20px; opacity: 0.8;
+}
+
+/* =========================================================
+   PART G: ELEMENT ANIMATIONS & DELAYS
+   ========================================================= */
+
+/* Animation Keyframes for input elements fading up */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Grouping form elements for animation */
+.form-side .header,
+.form-side .alert-error,
+.form-side .modern-input-group,
+.form-side .btn-login,
+.form-side .footer {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Sequential animation delays for a staggered entry effect */
+.form-side .header { animation-delay: 0.1s; }
+.form-side .alert-error { animation-delay: 0.2s; }
+.form-side .modern-input-group:nth-of-type(1) { animation-delay: 0.3s; } /* Email */
+.form-side .label-row-modern { animation-delay: 0.4s; animation: fadeInUp 0.6s ease forwards; } /* Forgot row */
+.form-side .modern-input-group:nth-of-type(2) { animation-delay: 0.4s; } /* Password */
+.form-side .btn-login { animation-delay: 0.5s; }
+.form-side .footer { animation-delay: 0.6s; }
+
+/* Responsive design for split screen */
+@media (max-width: 768px) {
+    .login-card .split-container {
+        flex-direction: column-reverse; /* Put form above graphic on mobile screens */
+    }
+    .split-container .form-side {
+        padding: 30px;
+    }
+    .split-container .graphic-side {
+        min-height: 250px;
+        padding: 30px;
+    }
+    .graphic-side h3 { font-size: 30px; }
+}
+
+/* Responsive adjustment */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+}

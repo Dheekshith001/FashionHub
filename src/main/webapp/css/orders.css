@@ -1,0 +1,201 @@
+/* FashionHub — orders (light premium, matches design system) */
+
+body.orders-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 480px at 10% 0%, rgba(255, 107, 26, 0.07), transparent 55%),
+        radial-gradient(640px 400px at 100% 0%, rgba(255, 133, 51, 0.06), transparent 50%),
+        var(--bg-page, #f6f7fb);
+    color: var(--text, #222);
+}
+
+.orders-shell {
+    padding: 96px 0 72px;
+}
+
+.orders-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.orders-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+    color: var(--text, #222);
+}
+
+.orders-sub {
+    margin-top: 8px;
+    color: var(--text-muted, #666);
+    font-weight: 600;
+    max-width: 70ch;
+    line-height: 1.55;
+}
+
+.orders-flash {
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.1);
+    color: #047857;
+    font-weight: 800;
+}
+
+.orders-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.order-card {
+    border-radius: var(--radius-lg, 20px);
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: var(--card, #fff);
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(17, 20, 27, 0.06));
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md, 0 20px 50px rgba(17, 20, 27, 0.1));
+}
+
+.order-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: linear-gradient(90deg, rgba(255, 107, 26, 0.06), transparent);
+}
+
+.order-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.1));
+    background: var(--bg-page, #f6f7fb);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    color: var(--text-muted, #666);
+}
+
+.pill--accent {
+    border-color: rgba(255, 107, 26, 0.35);
+    color: var(--orange, #ff6b1a);
+    background: rgba(255, 107, 26, 0.06);
+    box-shadow: 0 0 0 1px rgba(255, 107, 26, 0.08);
+}
+
+.order-status {
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--accent-2, #ff8533);
+}
+
+.order-card__body {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 16px 18px 18px;
+    align-items: center;
+}
+
+@media (max-width: 640px) {
+    .order-card__body {
+        grid-template-columns: 1fr;
+    }
+}
+
+.order-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(17, 20, 27, 0.06));
+    justify-self: center;
+}
+
+.order-meta {
+    display: grid;
+    gap: 8px;
+}
+
+.order-line-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
+    color: var(--text, #222);
+}
+
+.order-line-sub {
+    color: var(--text-muted, #666);
+    font-weight: 650;
+}
+
+.order-line-price {
+    margin-top: 6px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-size: 1.05rem;
+    color: var(--text, #222);
+}
+
+.order-line-total {
+    margin-top: 4px;
+    font-size: 0.92rem;
+    color: var(--text-muted, #666);
+    font-weight: 700;
+}
+
+.order-line-total strong {
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: var(--orange, #ff6b1a);
+}
+
+.orders-empty {
+    border-radius: var(--radius-lg, 20px);
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: var(--card, #fff);
+    padding: 28px 22px;
+    color: var(--text-muted, #666);
+    font-weight: 650;
+    text-align: center;
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(17, 20, 27, 0.06));
+}
+
+.orders-empty a {
+    color: var(--orange, #ff6b1a);
+    font-weight: 800;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 107, 26, 0.25);
+}
+
+.orders-empty a:hover {
+    color: var(--accent-2, #ff8533);
+}

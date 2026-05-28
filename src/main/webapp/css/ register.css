@@ -1,0 +1,167 @@
+/* --- A. BASE OVERRIDES --- */
+body {
+    display: block !important;
+    padding: 0 !important;
+    background-color: #f4f7f6;
+    overflow-x: hidden;
+}
+
+.content-wrapper {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    z-index: 1;
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* --- B. CARD STRUCTURE (Split 40/60) --- */
+.registration-container {
+    width: 95%;
+    max-width: 1100px;
+}
+
+.registration-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.split-container {
+    display: flex;
+    width: 100%;
+    min-height: 700px;
+}
+
+/* --- C. LEFT SIDE: GRAPHIC (Matching Login) --- */
+.graphic-side {
+    flex: 0 0 40%;
+    background: linear-gradient(135deg, #1a1c22 0%, #2c3e50 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+}
+
+.graphic-side h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.1;
+    z-index: 2;
+}
+
+.graphic-side h3 span { color: #ff6b1a; }
+
+.graphic-side p {
+    color: #bdc3c7;
+    margin: 20px 0;
+    z-index: 2;
+    max-width: 250px;
+}
+
+.graphic-side .logo-img { width: 70px; z-index: 2; opacity: 0.8; }
+
+/* --- D. RIGHT SIDE: FORM AREA (Scrollable) --- */
+.form-side {
+    flex: 0 0 60%;
+    padding: 40px 60px;
+    max-height: 850px;
+    overflow-y: auto;
+}
+
+.form-side .header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+/* Floating Label Logic */
+.modern-input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.modern-input-group input, .modern-input-group textarea {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 15px;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    background: transparent;
+    outline: none;
+    transition: 0.3s;
+}
+
+.modern-input-group label {
+    position: absolute;
+    top: 12px; left: 0;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.modern-input-group input:focus ~ label,
+.modern-input-group input:valid ~ label,
+.modern-input-group textarea:focus ~ label,
+.modern-input-group textarea:valid ~ label {
+    top: -12px;
+    font-size: 12px;
+    color: #ff6b1a;
+    font-weight: 700;
+}
+
+/* Static label for date input */
+.static-label {
+    top: -12px !important;
+    font-size: 12px !important;
+}
+
+/* Form Grid Layouts */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.form-row-triple { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+
+/* Gender Styles */
+.gender-selection { margin-bottom: 20px; }
+.gender-selection p { font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+.radio-group { display: flex; gap: 20px; }
+.radio-group input { accent-color: #ff6b1a; }
+
+/* --- E. BUTTON & FOOTER --- */
+.btn-register {
+    width: 100%;
+    background: linear-gradient(to right, #ff6b1a, #ff4d4d);
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 26, 0.3);
+}
+
+.footer-link { text-align: center; margin-top: 25px; font-size: 14px; }
+.footer-link a { color: #ff6b1a; font-weight: 700; text-decoration: none; }
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .split-container { flex-direction: column; }
+    .graphic-side, .form-side { flex: none; width: 100%; }
+    .form-row, .form-row-triple { grid-template-columns: 1fr; }
+}

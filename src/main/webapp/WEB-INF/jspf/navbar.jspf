@@ -1,0 +1,280 @@
+<%-- Fragment only: do not add a page directive here (static include merges into parent). --%>
+<%
+    com.fashionhub.model.User navUser = (com.fashionhub.model.User) session.getAttribute("user");
+    /* Context path via EL below - avoids local variable name clash with parent JSPs (e.g. ctx). */
+    String uri = request.getRequestURI();
+    boolean authVariant = uri != null && uri.contains("/customer/auth.jsp");
+    String headerClass = "main-header show";
+    %>
+<header class="<%= headerClass %>">
+    <div class="container navbar-top">
+
+        <div class="nav-left">
+            <a href="${pageContext.request.contextPath}/home" class="logo">
+                <img src="${pageContext.request.contextPath}/images/logo.png" class="logo-img" alt="FashionHub Logo">
+                FASHION<span>HUB</span>
+            </a>
+        </div>
+
+
+<div class="nav-center">
+ <div class="nav-center">
+
+    <div class="nav-links show">
+
+        <!-- HOME -->
+        <a class="nav-link <%= request.getRequestURI().contains("/home") ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/home">
+           HOME
+        </a>
+
+        <!-- MEN -->
+        <a class="nav-link <%= "1".equals(request.getParameter("category")) ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/CategoryController?category=1">
+           MEN
+        </a>
+
+        <!-- WOMEN -->
+        <a class="nav-link <%= "2".equals(request.getParameter("category")) ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/CategoryController?category=2">
+           WOMEN
+        </a>
+
+        <!-- KIDS -->
+        <a class="nav-link <%= "3".equals(request.getParameter("category")) ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/CategoryController?category=3">
+           KIDS
+        </a>
+
+        <!-- FOOTWEAR -->
+        <a class="nav-link <%= "4".equals(request.getParameter("category")) ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/CategoryController?category=4">
+           FOOTWEAR
+        </a>
+
+        <!-- ACCESSORIES -->
+        <a class="nav-link <%= "5".equals(request.getParameter("category")) ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/CategoryController?category=5">
+           ACCESSORIES
+        </a>
+
+        <!-- BEAUTY -->
+        <a class="nav-link <%= "6".equals(request.getParameter("category")) ? "active" : "" %>"
+           href="${pageContext.request.contextPath}/CategoryController?category=6">
+           BEAUTY
+        </a>
+
+    </div>
+
+</div>
+</div>
+
+
+<div class="search-box">
+
+    <form class="search-form"
+          action="${pageContext.request.contextPath}/home"
+          method="get">
+
+        <input type="text"
+               name="keyword"
+               class="search-input"
+               placeholder="Search products...">
+
+        <button type="button" class="search-btn">
+            <i class="fa fa-search"></i>
+        </button>
+
+    </form>
+
+</div>
+
+     <div class="nav-right">
+
+    <% if (navUser == null) { %>
+
+        <a href="${pageContext.request.contextPath}/customer/auth.jsp"
+           class="nav-auth-link">
+           Login / Register
+        </a>
+
+    <% } %>
+
+    <!-- Wishlist -->
+    <a href="${pageContext.request.contextPath}/WishlistController"
+       class="icon-btn"
+       title="Wishlist">
+
+        <i class="far fa-heart"></i>
+
+    </a>
+
+    <!-- Cart -->
+    <div class="nav-item">
+
+        <a href="${pageContext.request.contextPath}/ViewCartController"
+           class="icon-btn"
+           title="Cart">
+
+            <i class="fa fa-shopping-cart"></i>
+
+        </a>
+
+        <%
+        Integer cartCount =
+            (Integer) session.getAttribute("cartCount");
+        %>
+
+        <% if(cartCount != null && cartCount > 0){ %>
+
+        <span class="badge">
+            <%= cartCount %>
+        </span>
+
+        <% } %>
+
+    </div>
+
+    <!-- Profile LAST -->
+    <% if (navUser != null) { %>
+
+    <div class="nav-account" data-nav-account>
+
+     <button type="button"
+        class="nav-account__trigger"
+        data-nav-account-trigger
+        aria-expanded="false"
+        aria-haspopup="true">
+
+   <img class="nav-account__avatar"
+     src="${pageContext.request.contextPath}/uploads/profiles/<%= navUser.getProfileImage() %>"
+     alt="Profile">
+
+    <span class="nav-account__name">
+        <%= navUser.getName() != null ? navUser.getName() : "Member" %>
+    </span>
+
+    <i class="fas fa-chevron-down nav-account__chev"
+       aria-hidden="true"></i>
+
+</button>
+
+        <div class="nav-account__menu"
+             data-nav-account-menu
+             hidden>
+
+            <a class="nav-account__item"
+               href="${pageContext.request.contextPath}/ProfileController">
+
+                <i class="far fa-user"></i>
+                My Profile
+
+            </a>
+
+            <a class="nav-account__item"
+               href="${pageContext.request.contextPath}/OrdersController">
+
+                <i class="fas fa-receipt"></i>
+                My Orders
+
+            </a>
+
+            <a class="nav-account__item"
+               href="${pageContext.request.contextPath}/WishlistController">
+
+                <i class="far fa-heart"></i>
+                Wishlist
+
+            </a>
+
+            <a class="nav-account__item nav-account__item--danger"
+               href="${pageContext.request.contextPath}/LogoutController">
+
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <% } %>
+
+</div>
+
+    </div>
+</header>
+<script src="${pageContext.request.contextPath}/js/nav-account.js" defer></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchBox =
+        document.querySelector(".search-box");
+
+    const searchBtn =
+        document.querySelector(".search-btn");
+
+    const searchInput =
+        document.querySelector(".search-input");
+
+    const searchForm =
+        document.querySelector(".search-form");
+
+    if(!searchBox || !searchBtn || !searchInput || !searchForm){
+        return;
+    }
+
+    // OPEN SEARCH
+    searchBtn.addEventListener("click", function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        if(!searchBox.classList.contains("active")){
+
+            searchBox.classList.add("active");
+
+            searchInput.focus();
+
+            return;
+        }
+
+        // SUBMIT SEARCH
+        if(searchInput.value.trim() !== ""){
+
+            searchForm.submit();
+        }
+    });
+
+    // ENTER KEY
+    searchInput.addEventListener("keydown", function(e){
+
+        if(e.key === "Enter"){
+
+            e.preventDefault();
+
+            if(searchInput.value.trim() !== ""){
+
+                searchForm.submit();
+            }
+        }
+    });
+
+    // PREVENT CLOSE
+    searchBox.addEventListener("click", function(e){
+
+        e.stopPropagation();
+    });
+
+    // CLOSE OUTSIDE
+    document.addEventListener("click", function(){
+
+        searchBox.classList.remove("active");
+    });
+
+});
+
+</script>

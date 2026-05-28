@@ -1,0 +1,305 @@
+/* FashionHub — profile (light premium, matches global design system) */
+
+body.profile-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 480px at 12% 0%, rgba(255, 107, 26, 0.08), transparent 55%),
+        radial-gradient(700px 420px at 100% 10%, rgba(255, 133, 51, 0.06), transparent 50%),
+        var(--bg-page, #f6f7fb);
+    color: var(--text, #222);
+}
+
+.profile-shell {
+    padding: 100px 0 72px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 980px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.profile-card {
+    border-radius: var(--radius-lg, 20px);
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: var(--card, #fff);
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(17, 20, 27, 0.06));
+    overflow: hidden;
+    transition: box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.profile-card:hover {
+    box-shadow: var(--shadow-md, 0 20px 50px rgba(17, 20, 27, 0.1));
+}
+
+.profile-card__pad {
+    padding: 22px;
+}
+
+.profile-hero {
+    text-align: center;
+    padding: 28px 20px 22px;
+    border-bottom: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: linear-gradient(180deg, rgba(255, 107, 26, 0.06) 0%, transparent 100%);
+}
+
+.profile-avatar {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 12px 36px rgba(17, 20, 27, 0.12), 0 0 0 1px var(--line, rgba(22, 24, 30, 0.08));
+}
+
+.profile-name {
+    margin-top: 14px;
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    color: var(--text, #222);
+}
+
+.profile-email {
+    margin-top: 6px;
+    color: var(--text-muted, #666);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.profile-meta {
+    margin-top: 10px;
+    color: var(--orange, #ff6b1a);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+}
+
+.pf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    border-radius: 999px;
+    padding: 12px 14px;
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.1));
+    cursor: pointer;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    text-decoration: none;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.pf-btn--primary {
+    color: #fff;
+    background-image: linear-gradient(115deg, #ff6b1a 0%, #ff5c8a 48%, #ff8533 100%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    border-color: transparent;
+    box-shadow: 0 12px 32px rgba(255, 107, 26, 0.28);
+}
+
+.pf-btn--primary:hover {
+    transform: translateY(-2px);
+    background-position: 100% 50%;
+    box-shadow: 0 16px 40px rgba(255, 107, 26, 0.36);
+}
+
+.pf-btn--ghost {
+    color: var(--text, #222);
+    background: var(--bg-page, #f6f7fb);
+}
+
+.pf-btn--ghost:hover {
+    border-color: rgba(255, 107, 26, 0.35);
+    transform: translateY(-1px);
+}
+
+.pf-btn[hidden] {
+    display: none !important;
+}
+
+.profile-panel {
+    border-radius: var(--radius-lg, 20px);
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: var(--card, #fff);
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(17, 20, 27, 0.06));
+}
+
+.profile-panel__head {
+    padding: 22px 22px 12px;
+    border-bottom: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+}
+
+.profile-panel__title {
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    font-size: clamp(1.3rem, 2.1vw, 1.7rem);
+    letter-spacing: -0.02em;
+    color: var(--text, #222);
+}
+
+.profile-panel__sub {
+    margin-top: 8px;
+    color: var(--text-muted, #666);
+    font-weight: 600;
+    line-height: 1.55;
+}
+
+.profile-panel__body {
+    padding: 18px 22px 24px;
+}
+
+.pf-kv {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 10px 14px;
+    align-items: baseline;
+}
+
+@media (max-width: 640px) {
+    .pf-kv {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pf-k {
+    color: var(--text-muted, #666);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+}
+
+.pf-v {
+    font-weight: 700;
+    color: var(--text, #222);
+    word-break: break-word;
+}
+
+.pf-flash {
+    margin: 0 0 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.1));
+    background: var(--bg-page, #f6f7fb);
+    font-weight: 700;
+}
+
+.pf-flash--ok {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.1);
+    color: #047857;
+}
+
+.pf-flash--err {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.08);
+    color: #991b1b;
+}
+
+.pf-form {
+    display: grid;
+    gap: 12px;
+}
+
+.pf-field {
+    position: relative;
+}
+
+.pf-field input,
+.pf-field textarea {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.12));
+    background: var(--card, #fff);
+    color: var(--text, #222);
+    outline: none;
+    padding: 1.05rem 1rem 0.62rem;
+    font-weight: 650;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pf-field input:focus,
+.pf-field textarea:focus {
+    border-color: rgba(255, 107, 26, 0.45);
+    box-shadow: 0 0 0 3px rgba(255, 107, 26, 0.12);
+}
+
+.pf-field textarea {
+    min-height: 110px;
+    resize: vertical;
+    padding-top: 1.15rem;
+}
+
+.pf-field label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted, #666);
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: top 0.2s ease, transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    transform-origin: left top;
+}
+
+.pf-field textarea + label {
+    top: 18px;
+    transform: translateY(0);
+}
+
+.pf-field input:focus + label,
+.pf-field input:not(:placeholder-shown) + label,
+.pf-field textarea:focus + label,
+.pf-field textarea:not(:placeholder-shown) + label {
+    top: 0.52rem;
+    transform: translateY(0) scale(0.78);
+    color: var(--orange, #ff6b1a);
+}
+
+.pf-field input::placeholder,
+.pf-field textarea::placeholder {
+    color: transparent;
+}
+
+.pf-upload {
+    display: grid;
+    gap: 8px;
+}
+
+.pf-upload input[type="file"] {
+    width: 100%;
+    color: var(--text-muted, #666);
+}
+
+.pf-muted {
+    color: var(--text-muted, #666);
+    font-size: 0.88rem;
+    font-weight: 650;
+}
+
+body.profile-page .footer {
+    position: relative;
+    z-index: 2;
+}

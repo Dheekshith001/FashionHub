@@ -1,0 +1,164 @@
+/* Product details — FashionHub design system (loads after style.css) */
+
+#content-area {
+    background: var(--bg-page, #f6f7fb);
+    min-height: 100vh;
+    padding-bottom: 48px;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 88px auto 40px;
+    display: flex;
+    align-content: center;
+    gap: clamp(28px, 4vw, 50px);
+    padding: 0 clamp(16px, 3vw, 24px);
+    flex-wrap: wrap;
+}
+
+.left-col {
+    flex: 1 1 320px;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: min(520px, 70vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+    border-radius: var(--radius-lg, 20px);
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.08));
+    background: var(--card, #fff);
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(17, 20, 27, 0.06));
+    transition: box-shadow 0.28s ease;
+}
+
+.img-wrapper:hover {
+    box-shadow: var(--shadow-md, 0 20px 50px rgba(17, 20, 27, 0.1));
+}
+
+.main-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right-col {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.brand {
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 900;
+    color: var(--text, #222);
+    font-family: "Playfair Display", Georgia, serif;
+}
+
+.p-name {
+    padding-top: 10px;
+    font-size: 1.05rem;
+    color: var(--text-muted, #666);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.rating-box {
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.1));
+    padding: 8px 12px;
+    display: inline-block;
+    margin: 12px 0;
+    border-radius: 12px;
+    background: var(--card, #fff);
+}
+
+.price-tag {
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    color: var(--orange, #ff6b1a);
+    font-weight: 900;
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.size-label {
+    font-weight: 800;
+    color: var(--text, #222);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.size-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.s-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--line, rgba(22, 24, 30, 0.15));
+    cursor: pointer;
+    font-weight: 800;
+    background: var(--card, #fff);
+    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.s-btn:hover {
+    border-color: rgba(255, 107, 26, 0.45);
+    color: var(--orange, #ff6b1a);
+}
+
+.s-btn.active {
+    border: 2px solid var(--orange, #ff6b1a);
+    color: var(--orange, #ff6b1a);
+    box-shadow: 0 0 0 3px rgba(255, 107, 26, 0.12);
+}
+
+.section-top-selling {
+    margin-top: 40px;
+}
+
+.add-bag {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px 22px;
+      border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #fff;
+    background: linear-gradient(120deg, var(--orange, #ff6b1a), var(--accent-2, #ff8533));
+    box-shadow: 0 14px 36px rgba(255, 107, 26, 0.3);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.add-bag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px rgba(255, 107, 26, 0.38);
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    .img-wrapper {
+        height: 360px;
+    }
+}

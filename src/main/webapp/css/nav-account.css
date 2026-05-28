@@ -1,0 +1,132 @@
+/* FashionHub — account dropdown (used with WEB-INF/jspf/navbar.jspf) */
+
+.nav-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-account__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(26, 28, 34, 0.12);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 999px;
+    padding: 6px 10px 6px 6px;
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.nav-account__trigger:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 107, 26, 0.35);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+.nav-account.is-open .nav-account__trigger {
+    border-color: rgba(255, 107, 26, 0.55);
+    box-shadow: 0 14px 34px rgba(255, 107, 26, 0.12);
+}
+
+.nav-account__avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.nav-account__name {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--text, #222);
+}
+
+.nav-account__chev {
+    font-size: 11px;
+    opacity: 0.65;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.nav-account.is-open .nav-account__chev {
+    transform: rotate(180deg);
+    opacity: 0.95;
+}
+
+.nav-account__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    min-width: 220px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(26, 28, 34, 0.10);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.14);
+    z-index: 5000;
+    transform-origin: top right;
+    animation: fhMenuIn 0.22s ease both;
+}
+
+.nav-account__menu[hidden] {
+    display: none !important;
+}
+
+@keyframes fhMenuIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.nav-account__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text, #222);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.nav-account__item i {
+    width: 18px;
+    text-align: center;
+    color: var(--text-muted, #666);
+}
+
+.nav-account__item:hover {
+    background: rgba(255, 107, 26, 0.10);
+    transform: translateX(2px);
+}
+
+.nav-account__item--danger:hover {
+    background: rgba(255, 77, 109, 0.10);
+}
+
+@media (max-width: 900px) {
+    .nav-account__name {
+        display: none;
+    }
+    .nav-account__trigger {
+        padding: 6px;
+    }
+}
