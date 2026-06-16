@@ -6,6 +6,12 @@ FashionHub is a full-stack e-commerce web application developed using Java Servl
 
 FashionHub is an e-commerce platform that allows users to explore fashion products, manage wishlists and carts, place orders, and track order history. The application follows the MVC architecture using Java Servlets, JSP, JDBC, and MySQL.
 
+💼 Internship Experience
+
+FashionHub was developed during my Full Stack Java Development internship as a real-world e-commerce application. Through this project, I gained practical experience in designing and developing web applications using Java Servlets, JSP, JDBC, MySQL, Apache Tomcat, and the MVC architecture.
+
+The project involved implementing user authentication, product management, shopping cart functionality, wishlist management, order processing, database integration, and session management.
+
 ## ⭐ Key Highlights
 
 - Built using MVC Architecture
@@ -249,6 +255,8 @@ LinkedIn: [dheekshithm](https://www.linkedin.com/in/dheekshithm)
 
 ---
 
-## 📜 License
+📜 License
 
-This project is developed for educational and portfolio purposes.
+This project was developed as part of a Full Stack Java Development internship and serves as a demonstration of practical software development skills, including Java Servlets, JSP, JDBC, MySQL, MVC architecture, and e-commerce application development.
+
+© 2025 Muthuluri Dheekshith. All rights reserved.
