@@ -8,7 +8,7 @@ FashionHub is an e-commerce platform that allows users to explore fashion produc
 
 💼 Internship Experience
 
-FashionHub was developed during my Full Stack Java Development internship as a real-world e-commerce application. Through this project, I gained practical experience in designing and developing web applications using Java Servlets, JSP, JDBC, MySQL, Apache Tomcat, and the MVC architecture.
+FashionHub was developed during my internship as a Full Stack Java Development,i developed real-world e-commerce application. Through this project, I gained practical experience in designing and developing web applications using Java Servlets, JSP, JDBC, MySQL, Apache Tomcat, and the MVC architecture.
 
 The project involved implementing user authentication, product management, shopping cart functionality, wishlist management, order processing, database integration, and session management.
 
